@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+        <div class="container-fluid tm-container-content tm-mt-60">
+            <div class="row mb-4">
+                <h2 class="col-6 tm-text-primary">
+                    Liste d'utilisateurs
+                </h2>
+            </div>
+            
+            <div class="row tm-mb-90 tm-gallery">
+                {% for utilisateur in Utilisateurs %}
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+                        <figure class="effect-ming tm-video-item">
+                            <img src="{{utilisateur[5]}}" alt="Image" class="img-fluid">
+                            <figcaption class="d-flex align-items-center justify-content-center">
+                                <h2>{{ utilisateur[1]}}</h2>
+                                <a href="{{ url_for('utilisateur')}}">View more</a>
+                            </figcaption>                    
+                        </figure>
+                        <div class="d-flex justify-content-between tm-text-gray">
+                            <span class="tm-text-gray-light">{{utilisateur[1]}}</span>
+                            <span>{{utilisateur[0]}}</span>
+                        </div>
+                    </div>  
+                {% endfor %}     
+            </div> <!-- row -->
+        </div> <!-- container-fluid, tm-container-content -->
+
+        {% if username %}
+            <div class="row tm-mb-90">
+                <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
+                    <a href="{{ url_for('authenidentification') }}" class="btn btn-primary mb-2">Ajouter un Utilisateur</a>
+                </div>
+            </div>
+        {% endif %}
+
+        <script src="js/plugins.js"></script>
+        <script>
+            $(window).on("load", function() {
+                $('body').addClass('loaded');
+            });
+        </script>
+</main>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <title>Ajouter un article</title>
+    <div>
+        {% if error %}
+        <p style="color:#F00">{{ error }}</p>
+        {% endif %}
+        <form class="d-flex tm-search-form" method="post" action="{{ url_for('ajouter') }}">
+            <input class="form-control tm-search-input" type="text" id="titre" name="titre" placeholder="Titre"><br><br>
+            <input class="form-control tm-search-input" type="text" id="auteur" name="auteur" placeholder="Auteur"><br><br>
+            <input class="form-control tm-search-input" type="text" id="date" name="date" placeholder="Date"><br><br>
+            <input class="form-control tm-search-input" type="text" id="contenu" name="contenu" placeholder="Contenu"><br><br>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+    </div>
+
+{% endblock %}  

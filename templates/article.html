@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{%if username %}
+<h1>Modifier l'article</h1>
+    <div>
+        <form class="d-flex tm-search-form" method="post" action="{{ url_for('update_article', identifiant=article[1]) }}">
+            <label for="titre">Titre:</label>
+            <input class="form-control tm-search-input" type="text" id="titre" name="titre" value="{{ article[2] }}"><br>
+            <label for="identifiant">Identifiant:</label>
+            <input class="form-control tm-search-input" type="text" id="identifiant" name="identifiant" value="{{ article[1] }}" readonly><br>
+            <label for="auteur">Auteur:</label>
+            <input class="form-control tm-search-input" type="text" id="auteur" name="auteur" value="{{ article[3] }}" readonly><br>
+            <label for="date">Date de publication:</label>
+            <input class="form-control tm-search-input" type="date" id="date" name="date" value="{{ article[4] }}" readonly><br>
+            <label for="contenu">Contenu:</label>
+            <input class="form-control tm-search-input" type="text" id="contenu" name="contenu" value="{{ article[5] }}"><br>
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        </form>
+    </div>
+
+{% else %}
+<h1>Détails sur l'article</h1>
+<div>
+    <form class="d-flex tm-search-form" method="post" action="/">
+        <label for="titre">Titre:</label>
+        <input class="form-control tm-search-input" type="text" id="titre" name="titre" value="{{ article[2] }}" readonly><br>
+        <label for="identifiant">Identifiant:</label>
+        <input class="form-control tm-search-input" type="text" id="identifiant" name="identifiant" value="{{ article[1] }}" readonly><br>
+        <label for="auteur">Auteur:</label>
+        <input class="form-control tm-search-input" type="text" id="auteur" name="auteur" value="{{ article[3] }}" readonly><br>
+        <label for="date">Date de publication:</label>
+        <input class="form-control tm-search-input" type="date" id="date" name="date" value="{{ article[4] }}" readonly><br>
+        <label for="contenu">Contenu:</label>
+        <input class="form-control tm-search-input" type="text" id="contenu" name="contenu" value="{{ article[5] }}" readonly><br>
+    </form>
+</div>
+{% endif %}
+{% endblock %}  
